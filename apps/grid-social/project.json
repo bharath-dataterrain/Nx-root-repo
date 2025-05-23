@@ -1,0 +1,83 @@
+{
+  "root": "apps/grid-social",
+  "sourceRoot": "apps/grid-social/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/grid-social",
+        "index": "apps/grid-social/src/index.html",
+        "baseHref": "/",
+        "main": "apps/grid-social/src/main.tsx",
+        "polyfills": "apps/grid-social/src/polyfills.ts",
+        "tsConfig": "apps/grid-social/tsconfig.app.json",
+        "assets": [
+          "apps/grid-social/src/favicon.ico",
+          "apps/grid-social/src/assets"
+        ],
+        "styles": ["apps/grid-social/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/grid-social/src/environments/environment.ts",
+              "with": "apps/grid-social/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "grid-social:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "grid-social:build:development"
+        },
+        "production": {
+          "buildTarget": "grid-social:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/grid-social/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/grid-social"],
+      "options": {
+        "jestConfig": "apps/grid-social/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,28 @@
+{
+  "root": "apps/grid-social-e2e",
+  "sourceRoot": "apps/grid-social-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/grid-social-e2e/cypress.json",
+        "devServerTarget": "grid-social:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "grid-social:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/grid-social-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["grid-social"]
+}

@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "grid-social": "apps/grid-social",
+    "grid-social-e2e": "apps/grid-social-e2e",
     "shared-components": "libs/shared-components",
     "shared-components-e2e": "apps/shared-components-e2e",
     "site": "apps/site",
