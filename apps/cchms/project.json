@@ -1,0 +1,80 @@
+{
+  "root": "apps/cchms",
+  "sourceRoot": "apps/cchms/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/cchms",
+        "index": "apps/cchms/src/index.html",
+        "baseHref": "/",
+        "main": "apps/cchms/src/main.tsx",
+        "polyfills": "apps/cchms/src/polyfills.ts",
+        "tsConfig": "apps/cchms/tsconfig.app.json",
+        "assets": ["apps/cchms/src/favicon.ico", "apps/cchms/src/assets"],
+        "styles": ["apps/cchms/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/cchms/src/environments/environment.ts",
+              "with": "apps/cchms/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "cchms:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "cchms:build:development"
+        },
+        "production": {
+          "buildTarget": "cchms:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/cchms/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/cchms"],
+      "options": {
+        "jestConfig": "apps/cchms/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

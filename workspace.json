@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "cchms": "apps/cchms",
+    "cchms-e2e": "apps/cchms-e2e",
     "grid-social": "apps/grid-social",
     "grid-social-e2e": "apps/grid-social-e2e",
     "shared-components": "libs/shared-components",
